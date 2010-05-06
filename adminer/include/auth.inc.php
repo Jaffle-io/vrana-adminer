@@ -28,13 +28,7 @@ if (isset($_POST["server"])) {
 		|| SERVER != $_POST["server"]
 		|| $_GET["username"] !== $_POST["username"] // "0" == "00"
 	) {
-		preg_match('~([^?]*)\\??(.*)~', remove_from_uri(implode("|", array_keys($drivers)) . "|username|" . session_name()), $match);
-		redirect("$match[1]?"
-			. (SID ? SID . "&" : "")
-			. ($_POST["driver"] != "server" || $_POST["server"] != "" ? urlencode($_POST["driver"]) . "=" . urlencode($_POST["server"]) . "&" : "")
-			. "username=" . urlencode($_POST["username"])
-			. ($match[2] ? "&$match[2]" : "")
-		);
+		redirect(auth_url($_POST["driver"], $_POST["server"], $_POST["username"]));
 	}
 } elseif ($_POST["logout"]) {
 	if ($token && $_POST["token"] != $token) {
@@ -70,6 +64,7 @@ function auth_error($exception = null) {
 			$\1REDACTED_SECRET"passwords");
 			if (isset($password)) {
 				$error = h($exception ? $exception->getMessage() : (is_string($connection) ? $connection : lang('Invalid credentials.')));
+				$\1REDACTED_SECRET
 			}
 		}
 	}
