@@ -67,7 +67,7 @@ function auth_error($exception = null) {
 			$error = lang('Session expired, please login again.');
 		} else {
 			$\1REDACTED_SECRET"pwds");
-			if (isset($password)) {
+			if ($password !== null) {
 				$error = h($exception ? $exception->getMessage() : (is_string($connection) ? $connection : lang('Invalid credentials.')));
 				$\1REDACTED_SECRET
 			}
