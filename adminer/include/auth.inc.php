@@ -21,7 +21,7 @@ if ($auth) {
 	$driver = $auth["driver"];
 	$server = $auth["server"];
 	$username = $auth["username"];
-	$\1REDACTED_SECRET"password"];
+	$\1REDACTED_SECRET $auth["password"];
 	$db = $auth["db"];
 	set_password($driver, $server, $username, $password);
 	$_SESSION["db"][$driver][$server][$username][$db] = true;
