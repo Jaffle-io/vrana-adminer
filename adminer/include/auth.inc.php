@@ -131,7 +131,7 @@ function auth_error($error) {
 			$\1REDACTED_SECRET
 			if ($password !== null) {
 				if ($\1REDACTED_SECRET false) {
-					$error .= '<br>' . lang('Master password expired. <a href="http://www.adminer.org/en/extension/" target="_blank">Implement</a> %s method to make it permanent.', '<code>permanentLogin()</code>');
+					$error .= '<br>' . lang('Master password expired. <a href="https://www.adminer.org/en/extension/" target="_blank">Implement</a> %s method to make it permanent.', '<code>permanentLogin()</code>');
 				}
 				set_password(DRIVER, SERVER, $_GET["username"], null);
 			}
